@@ -1,0 +1,134 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.postcard {
+  height: 35vh;
+  width: 26vw;
+  border-radius: 60px;
+  background-color: #f7dfdf;
+}
+
+.postcard .imgcontainer {
+  height: 85%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.imgcontainer img {
+  width: 100%;
+  border-radius: 60px;
+}
+
+.postcard .title {
+  height: 10%;
+  font-size: 24px;
+  font-weight: 550;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  display: flex;
+  justify-content: center;
+}
+
+/* forms */
+.form-layout {
+  width: 20vw;
+  height: 52vh;
+  background-color: white;
+  position: absolute;
+  bottom: 10vh;
+  left: 5vw;
+  padding: 20px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+}
+#headline {
+  margin-bottom: 30px;
+}
+.form-layout .heading {
+  color: rgb(170, 0, 0);
+  font-size: 30px;
+  font-weight: 750;
+  align-self: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-bottom: 40px;
+}
+
+.form-layout .input-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.input-container label {
+  width: 40%;
+  height: 3vh;
+  margin-left: 10px 5px;
+  font-size: larger;
+}
+.input-container input {
+  width: 100%;
+  height: 5vh;
+  margin-top: 10px;
+  padding: 5px 20px;
+  background-color: rgb(234 234 234 / 95%);
+  color: black;
+  border: none;
+  border-radius: 17px;
+  font-size: 18px;
+}
+
+.form-layout .submitbtn {
+  background-color: rgb(170, 0, 0);
+  margin-top: 30px;
+  width: 98%;
+  padding: 10px 30px;
+  color: white;
+  border-radius: 20px;
+  margin-left: 1px;
+}
+
+.form-layout .lastline {
+  margin-top: 5px;
+  font-size: large;
+  align-self: center;
+  margin-left: 1px;
+}
+
+.errormsg {
+  margin-top: -30px;
+  color: red;
+  font-size: 18px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin-left: 25px;
+}
+/* RTE */
+.rte-container {
+  min-height: 75vh;
+}
+
+/* select  */
+.select-box {
+  width: 70%;
+  height: 8vh;
+  margin-top: 30px;
+}
+.select-box select {
+  width: 85%;
+  padding: 10px 10px;
+  font-size: 18px;
+  background-color: transparent;
+  border: 1px solid brown;
+  border-radius: 15px;
+  margin-left: 12%;
+}
+/* submitbtn */
+.submitbtn {
+  padding: 10px 20px;
+  background-color: rgb(0 96 18);
+  box-shadow: 2px 5px 10px;
+  width: 14vw;
+  margin-left: 4vw;
+  color: white;
+  font-size: larger;
+}

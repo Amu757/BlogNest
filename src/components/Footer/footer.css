@@ -1,0 +1,71 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}  
+/* footer */
+
+.footer-container {
+    height: 49vh;
+    width: 99vw;
+    background-color: #e8e8e8;
+    padding: 35px;
+    border-top-right-radius: 8vw;
+    border-top-left-radius: 8vw;
+    margin: auto;
+  }
+  .footer-container .top{
+    height: 80%;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    padding-right:50px;
+    font-size: 22px;
+  }
+  .footer-container .top div{
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  
+  .top div ul{
+    list-style-type: none;
+  }
+  .top div ul .title{
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .footer-container .top .logo-container{
+    width: 50%;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+  }
+  .logo-container .logo{
+    height: 10vh;
+  }
+  .logo-container .logo img{
+   height: 9vh;
+   margin-bottom: 20px;
+  }
+  
+  .logo-container .emailinput{
+    border-radius: 20px;
+    width: 20vw;
+    padding: 10px 20px;
+    font-size: 23px;
+    background-color: transparent;
+    margin-top: 20px;
+  }
+  .footer-container .bottom{
+    height: 20%;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 50px;
+    font-size: 19px;
+  }
+  .footer-container hr{
+  width: 90vw;
+  margin: auto;
+  }
+  

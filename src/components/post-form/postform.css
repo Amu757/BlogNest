@@ -1,0 +1,52 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.formbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 30px;
+  margin-top: 50px;
+}
+
+.formbox .leftside {
+  width: 75%;
+  height: 95%;
+}
+.formbox label {
+  font-size: 22px;
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
+  color: brown;
+  margin-right: 30px;
+}
+.leftside .input-feild {
+  width: 40vw;
+  padding: 10px 20px;
+  border-radius: 20px;
+  background-color: white;
+  border: 1px solid rgb(193, 50, 18);
+  margin-bottom: 30px;
+  font-size: 18px;
+}
+.formbox .rightside {
+  width: 25%;
+  height: 95vh;
+}
+
+.rightside .image-box {
+  width: 15vw;
+  height: 25vh;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin: 30px 6vh;
+  
+}
+.image-box img {
+  width: 100%;
+}

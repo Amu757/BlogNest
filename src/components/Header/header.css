@@ -1,0 +1,117 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+/* header */
+.header-container {
+  width: 100vw;
+  height: 11vh;
+  background-color: antiquewhite;
+  font-weight: 600;
+  font-size: 27px;
+  padding-top: 8px;
+}
+.navigation {
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.leftpart {
+  display: flex;
+  width: 30%;
+  margin-left: 8vw;
+  height: 100%;
+}
+.leftpart img {
+  margin-top: -20px;
+  width: 22%;
+}
+.rightpart {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  width: 70%;
+  list-style-type: none;
+  margin-right: 20px;
+  padding-left: 17vw;
+}
+.navButton {
+  padding: 5px 10px;
+  background-color: transparent;
+}
+
+/* contact */
+.background {
+  width: 100vw;
+  height: 89vh;
+  background-color: rgb(241, 241, 241);
+}
+.contact-container {
+  width: 100vw;
+  height: 89vh;
+  background-image: url("../../public/contactbackimage.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: relative;
+  margin-left: 10%;
+  z-index: 1;
+}
+
+.topcontaint img {
+  width: 18vw;
+  height: 37vh;
+  border-radius: 50%;
+  position: absolute;
+  top: 15vh;
+  left: 18vw;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  width: 35vw;
+  height: 15vh;
+  position: absolute;
+  top: 25vh;
+  right: 19vw;
+}
+.intro h2 {
+  font-size: 52px;
+}
+.intro p {
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.link {
+  font-size: 32px;
+}
+.link:link,
+.link:visited {
+  color: black;
+}
+
+.lowerpart {
+  display: flex;
+  font-size: 34px;
+  column-gap: 15vw;
+  position: absolute;
+  bottom: 7vh;
+  left: 16vw;
+}
+.lowerpart div {
+  display: flex;
+  flex-direction: column;
+  row-gap: 4vh;
+}
+
+.lowerpart p {
+  width: 20vw;
+  font-weight: 550;
+}
