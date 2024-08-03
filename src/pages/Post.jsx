@@ -66,5 +66,5 @@ export default function Post() {
         <div className="postcontent">{parse(post.content)}</div>
       </div>
     </div>
-  ) : null;
+  ) : <h2>something went wront please try again</h2>;
 }
