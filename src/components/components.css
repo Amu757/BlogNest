@@ -18,6 +18,8 @@
 
 .imgcontainer img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
   border-radius: 60px;
 }
 
@@ -32,8 +34,8 @@
 
 /* forms */
 .form-layout {
-  width: 20vw;
-  height: 52vh;
+  width: 25vw;
+  height: 63vh;
   background-color: white;
   position: absolute;
   bottom: 10vh;
