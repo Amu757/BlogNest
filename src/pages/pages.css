@@ -22,8 +22,8 @@
   color: rgba(160, 67, 0, 0.786);
   position: absolute;
   font-size: 27px;
-  bottom: 12vh;
-  left: 38%;
+  bottom: 15vh;
+  left: 35%;
 }
 
 .home-container .posts-container {
@@ -126,9 +126,10 @@
 /* post form */
 .postform-container {
   width: 100vw;
-  height: 85vh;
+  min-height: 108vh;
   border-radius: 20px;
   padding: 20px;
+  background-color: #ededed;
 }
 
 /* post page */

@@ -78,8 +78,9 @@ export class Service {
       return false;
     }
   }
-
-  async getPosts(queries = [Query.equal("status", "active")]) {
+ 
+  async getPosts(user_id) {
+    let queries = [Query.equal("status", "active"),Query.equal("userId", user_id)]
     try {
       return await this.databases.listDocuments(
         conf.appwriteDBId,

@@ -1,11 +1,13 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Button, Input, RTE, Select } from "..";
 import appwriteService from "../../appwrite/config";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import "./postform.css"
+import Loader from "../Loder";
+import "./postform.css";
 export default function PostForm({ post }) {
+  const [loding, setLoading] = useState(false);
   const { register, handleSubmit, watch, setValue, control, getValues } =
     useForm({
       defaultValues: {
@@ -20,6 +22,7 @@ export default function PostForm({ post }) {
   const userData = useSelector((state) => state.auth.data);
 
   const submit = async (data) => {
+    setLoading(true);
     if (post) {
       const file = data.image[0]
         ? await appwriteService.uploadFile(data.image[0])
@@ -33,7 +36,7 @@ export default function PostForm({ post }) {
         ...data,
         featuredImage: file ? file.$id : undefined,
       });
-
+      setLoading(false);
       if (dbPost) {
         navigate(`/post/${dbPost.$id}`);
       }
@@ -43,11 +46,11 @@ export default function PostForm({ post }) {
         const fileId = file.$id;
         data.featuredImage = fileId;
 
-console.log("fun: ",userData)
+        console.log("fun: ", userData);
 
         const dbPost = await appwriteService.createPost({
           ...data,
-          userId: userData.$id,
+          userId: userData.data.$id,
         });
 
         if (dbPost) {
@@ -79,58 +82,60 @@ console.log("fun: ",userData)
   }, [watch, slugTransform, setValue]);
 
   return (
-    <form onSubmit={handleSubmit(submit)} className="formbox">
-      <div className="leftside">
-        <Input
-          label="Title :"
-          placeholder="Title"
-          {...register("title", { required: true })}
-        />
-        <Input
-          label="Slug :"
-          placeholder="Slug"
-          {...register("slug", { required: true })}
-          onInput={(e) => {
-            setValue("slug", slugTransform(e.currentTarget.value), {
-              shouldValidate: true,
-            });
-          }}
-        />
-        <RTE
-          label="Content :"
-          name="content"
-          control={control}
-          defaultValue={getValues("content")}
-        />
-      </div>
-      <div className="rightside">
-        <Input
-          label="Featured Image :"
-          type="file"
-          className="input-feild"
-          accept="image/png, image/jpg, image/jpeg, image/gif"
-          {...register("image", { required: !post })}
-        />
-        {post && (
-          <div className="image-box">
-            <img
-              src={appwriteService.getFilePreview(post.featuredImage)}
-              alt={post.title}
+    <>
+      {loding ? (
+        <Loader />
+      ) : (
+        <form onSubmit={handleSubmit(submit)} className="formbox">
+          <div className="leftside">
+            <Input
+              label="Title :"
+              placeholder="Title"
+              {...register("title", { required: true })}
+            />
+            <Input
+              label="Slug :"
+              placeholder="Slug"
+              {...register("slug", { required: true })}
+              onInput={(e) => {
+                setValue("slug", slugTransform(e.currentTarget.value), {
+                  shouldValidate: true,
+                });
+              }}
+            />
+            <RTE
+              label="Content :"
+              name="content"
+              control={control}
+              defaultValue={getValues("content")}
             />
           </div>
-        )}
-        <Select
-          options={["active", "inactive"]}
-          label="Status"
-          {...register("status", { required: true })}
-        />
-        <Button
-          type="submit"
-          bgColor={post ? "bg-green-500" : undefined}
-        >
-          {post ? "Update" : "Submit"}
-        </Button>
-      </div>
-    </form>
+          <div className="rightside">
+            <Input
+              label="Featured Image :"
+              type="file"
+              className="input-feild"
+              accept="image/png, image/jpg, image/jpeg, image/gif"
+              {...register("image", { required: !post })}
+            />
+            {post && (
+              <div className="image-box">
+           
+                <img
+                  src={appwriteService.getFilePreview(post.featuredImage)}
+                  alt={post.title}
+                />
+              </div>
+            )}
+            <Select
+              options={["active", "inactive"]}
+              label="Status"
+              {...register("status", { required: true })}
+            />
+            <Button type="submit">{post ? "Update" : "Submit"}</Button>
+          </div>
+        </form>
+      )}
+    </>
   );
 }

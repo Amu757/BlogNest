@@ -5,6 +5,7 @@ import authService from "./appwrite/auth";
 import { login, logout } from "./store/authSlice";
 import { Footer, Header } from "./components/index";
 import { Outlet } from "react-router-dom";
+import Loader from "./components/Loder";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -34,7 +35,7 @@ function App() {
       </div>
     </div>
   ) : (
-    <h3>Please wait while loading the resources</h3>
+    <Loader /> 
   );
 }
 

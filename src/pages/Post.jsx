@@ -4,9 +4,11 @@ import appwriteService from "../appwrite/config";
 import { Button } from "../components";
 import parse from "html-react-parser";
 import { useSelector } from "react-redux";
+import Loader from "../components/Loder";
 import "./pages.css";
 
 export default function Post() {
+  const [loding, setLoading] = useState(true);
   const [post, setPost] = useState(null);
   const { slug } = useParams();
   const navigate = useNavigate();
@@ -14,12 +16,13 @@ export default function Post() {
   const userData = useSelector((state) => state.auth.data);
 
   const isAuthor = post && userData ? post.userId === userData.data.$id : false;
-
   useEffect(() => {
     if (slug) {
       appwriteService.getPost(slug).then((post) => {
-        if (post) setPost(post);
-        else navigate("/");
+        if (post) {
+          setPost(post);
+          setLoading(false);
+        } else navigate("/");
       });
     } else navigate("/");
   }, [slug, navigate]);
@@ -45,7 +48,7 @@ export default function Post() {
   return post ? (
     <div className="post-room">
       <div className="post-banner">
-        <img
+       <img
           src={appwriteService.getFilePreview(post.featuredImage)}
           alt={post.title}
         />
@@ -66,5 +69,7 @@ export default function Post() {
         <div className="postcontent">{parse(post.content)}</div>
       </div>
     </div>
-  ) : <h2>something went wront please try again</h2>;
+  ) : (
+    <Loader />
+  );
 }
