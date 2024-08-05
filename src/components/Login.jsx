@@ -18,15 +18,19 @@ function Login() {
     setError("");
     
     try {
+      // setLoading(true);
       const session = await authService.login(data);
+      console.log("session achinved ",session)
       if (session) {
-        setLoading(true);
         const userData = await authService.getCurrentUser();
+        console.log("user data got from login: ",userData)
         if (userData) dispatch(authLogin(userData));
         setLoading(false)
         navigate("/");
+        console.log("i am out")
       }
     } catch (error) {
+      console.log(error)
       setError(error.message);
     }
   };

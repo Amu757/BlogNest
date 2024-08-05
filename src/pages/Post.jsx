@@ -10,12 +10,14 @@ import "./pages.css";
 export default function Post() {
   const [loding, setLoading] = useState(true);
   const [post, setPost] = useState(null);
+  const [path, setPath] = useState(null);
   const { slug } = useParams();
   const navigate = useNavigate();
 
   const userData = useSelector((state) => state.auth.data);
 
   const isAuthor = post && userData ? post.userId === userData.data.$id : false;
+
   useEffect(() => {
     if (slug) {
       appwriteService.getPost(slug).then((post) => {
@@ -23,6 +25,17 @@ export default function Post() {
           setPost(post);
           setLoading(false);
         } else navigate("/");
+
+        if (post.title == "Bali Travel Guide") setPath("/blogsimages/bali.jpg");
+        else if (post.title == "Argentina travel")
+          setPath("/blogsimages/argentina.jpg");
+        // path = "/blogsimages/argentina.jpg";
+        else if (post.title == "Mexico travel")
+          setPath("/blogsimages/mexico.jpg");
+        else if (post.title == "Peru travel") setPath("/blogsimages/peru.jpg");
+        else if (post.title == "Brazil travel")
+          setPath("/blogsimages/brazil.jpg");
+
       });
     } else navigate("/");
   }, [slug, navigate]);
@@ -48,8 +61,9 @@ export default function Post() {
   return post ? (
     <div className="post-room">
       <div className="post-banner">
-       <img
-          src={appwriteService.getFilePreview(post.featuredImage)}
+        <img
+          // src={appwriteService.getFilePreview(post.featuredImage)}
+          src={path}
           alt={post.title}
         />
 

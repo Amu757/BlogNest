@@ -13,7 +13,7 @@ function Home() {
 
   useEffect(() => {
     console.log("loggedIn:", loggedIn);
-    console.log("userInfo:", userId);
+    console.log("userId: ", userId);
     console.log("reloading");
 
     if (!loggedIn) setLoading(false);
@@ -51,10 +51,10 @@ function Home() {
       <>
         <div className="home-container">
           <div className="posts-container">
-            {!posts.length ? (
+            {posts.length === 0 ? (
               <h2>Add your first blog </h2>
             ) : (
-              posts.map((post) => <PostCard key={post.$id} {...post} />)
+              posts.map((post) => <PostCard key={post} {...post} />)
             )}
           </div>
         </div>
