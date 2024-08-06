@@ -17,28 +17,34 @@ export default function Post() {
   const userData = useSelector((state) => state.auth.data);
 
   const isAuthor = post && userData ? post.userId === userData.data.$id : false;
-
+  let fetched = false;
   useEffect(() => {
     if (slug) {
-      appwriteService.getPost(slug).then((post) => {
-        if (post) {
-          setPost(post);
-          setLoading(false);
-        } else navigate("/");
+      if (!fetched) {
+        appwriteService.getPost(slug).then((post) => {
+          if (post) {
+            setPost(post);
+            fetched=true
+            setLoading(false);
+          } else navigate("/");
 
-        if (post.title == "Bali Travel Guide") setPath("/blogsimages/bali.jpg");
-        else if (post.title == "Argentina travel")
-          setPath("/blogsimages/argentina.jpg");
-        // path = "/blogsimages/argentina.jpg";
-        else if (post.title == "Mexico travel")
-          setPath("/blogsimages/mexico.jpg");
-        else if (post.title == "Peru travel") setPath("/blogsimages/peru.jpg");
-        else if (post.title == "Brazil travel")
-          setPath("/blogsimages/brazil.jpg");
-
-      });
+          if (post.title === "Bali Travel Guide")
+            setPath("/blogsimages/bali.jpg");
+          else if (post.title === "Argentina travel")
+            setPath("/blogsimages/argentina.jpg");
+          else if (post.title === "Mexico travel")
+            setPath("/blogsimages/mexico.jpg");
+          else if (post.title === "Peru travel")
+            setPath("/blogsimages/peru.jpg");
+          else if (post.title === "Brazil travel")
+            setPath("/blogsimages/brazil.jpg");
+          else if (path === null) {
+            setPath(appwriteService.getFilePreview(post.featuredImage));
+          }
+        });
+      }
     } else navigate("/");
-  }, [slug, navigate]);
+  }, [slug,navigate]);
 
   const deletePost = () => {
     let confirmDelete = confirm("Want to delete the post?");

@@ -12,21 +12,18 @@ function Home() {
   const [loding, setLoading] = useState(false);
 
   useEffect(() => {
-    console.log("loggedIn:", loggedIn);
-    console.log("userId: ", userId);
-    console.log("reloading");
+    console.log("userid, loggedin ",userId,loggedIn)
+    console.log("post length: ",posts.length)
 
     if (!loggedIn) setLoading(false);
-    else if (userId) {
-      console.log("userInfo inside:", userId);
+    else if (loggedIn && userId) {
+      console.log("getting posts")
       setLoading(true);
-      console.log("inside api call for posts");
       appwriteService
         .getPosts(userId)
         .then((docs) => {
           setPosts(docs?.documents);
           setLoading(false);
-          console.log("got something ",docs.documents)
         })
         .catch((error) => {
           console.error("Error fetching posts:", error);
@@ -54,7 +51,7 @@ function Home() {
             {posts.length === 0 ? (
               <h2>Add your first blog </h2>
             ) : (
-              posts.map((post) => <PostCard key={post} {...post} />)
+              posts.map((post) => <PostCard key={post.title} {...post} />)
             )}
           </div>
         </div>

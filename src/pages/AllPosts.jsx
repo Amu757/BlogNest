@@ -22,7 +22,7 @@ function AllPosts() {
     <div className="home-container">
       <div className="posts-container">
         {posts.length !== 0 ? (
-          posts.map((post) => <PostCard {...post} key={post.slug} />)
+          posts.map((post) => <PostCard {...post} key={post.title} />)
         ) : (
           <Loader />
         )}
