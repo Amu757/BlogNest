@@ -46,11 +46,15 @@ export default function PostForm({ post }) {
         const fileId = file.$id;
         data.featuredImage = fileId;
 
-        console.log("fun: ", userData);
-
+        let currentuserId;
+        if (userData.data) {
+          currentuserId = userData.data.$id;
+        } else {
+          currentuserId = userData.$id;
+        }
         const dbPost = await appwriteService.createPost({
           ...data,
-          userId: userData.data.$id,
+          userId: currentuserId,
         });
 
         if (dbPost) {
@@ -72,6 +76,7 @@ export default function PostForm({ post }) {
   }, []);
 
   React.useEffect(() => {
+
     const subscription = watch((value, { name }) => {
       if (name === "title") {
         setValue("slug", slugTransform(value.title), { shouldValidate: true });
@@ -120,7 +125,6 @@ export default function PostForm({ post }) {
             />
             {post && (
               <div className="image-box">
-           
                 <img
                   src={appwriteService.getFilePreview(post.featuredImage)}
                   alt={post.title}

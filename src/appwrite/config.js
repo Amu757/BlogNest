@@ -78,9 +78,16 @@ export class Service {
       return false;
     }
   }
- 
-  async getPosts(user_id) {
-    let queries = [Query.equal("status", "active"),Query.equal("userId", user_id)]
+
+  async getPosts(user_id, getActive = true) {
+    let queries;
+    if (getActive)
+      queries = [
+        Query.equal("status", "active"),
+        Query.equal("userId", user_id),
+      ];
+    else queries = [Query.equal("userId", user_id)];
+
     try {
       return await this.databases.listDocuments(
         conf.appwriteDBId,
@@ -115,19 +122,14 @@ export class Service {
     }
   }
 
-  getFilePreview(fileId){
-   try {
-      return this.bucket.getFilePreview(
-         conf.appwritebucketId,
-         fileId
-      )
-   } catch (error) {
-      console.log(error)
-      return false
-   }
+  getFilePreview(fileId) {
+    try {
+      return this.bucket.getFilePreview(conf.appwritebucketId, fileId);
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
   }
-
-  
 }
 
 const service = new Service();

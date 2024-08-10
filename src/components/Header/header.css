@@ -26,9 +26,12 @@
   margin-left: 8vw;
   height: 100%;
 }
+.leftpart .logolink{
+  width: 6vw;
+}
 .leftpart img {
   margin-top: -20px;
-  width: 22%;
+  width: 6vw;
 }
 .rightpart {
   display: flex;

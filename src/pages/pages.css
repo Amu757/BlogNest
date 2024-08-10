@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 .home-container {
-  height: 100vh;
+  min-height: 89vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -34,11 +34,12 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 50px;
+  row-gap: 5vh;
+  column-gap: 2vw;
 }
 
 .posts-container a {
-  height: 10vh;
+  height: 35vh;
 }
 
 /* contact */

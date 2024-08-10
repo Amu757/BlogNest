@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import appwriteService from "../appwrite/config";
 import { Button } from "../components";
@@ -15,8 +15,17 @@ export default function Post() {
   const navigate = useNavigate();
 
   const userData = useSelector((state) => state.auth.data);
+  let idinsidepost, idinsideuserdata, isAuthor;
 
-  const isAuthor = post && userData ? post.userId === userData.data.$id : false;
+  if (post && userData) {
+    idinsidepost = post.userId;
+    if (userData.data) idinsideuserdata = userData.data.$id;
+    else idinsideuserdata = userData.$id;
+
+    if (idinsidepost === idinsideuserdata) isAuthor = true;
+    else isAuthor = false;
+  }
+
   let fetched = false;
   useEffect(() => {
     if (slug) {
@@ -24,7 +33,7 @@ export default function Post() {
         appwriteService.getPost(slug).then((post) => {
           if (post) {
             setPost(post);
-            fetched=true
+            fetched = true;
             setLoading(false);
           } else navigate("/");
 
@@ -44,7 +53,7 @@ export default function Post() {
         });
       }
     } else navigate("/");
-  }, [slug,navigate]);
+  }, [slug]);
 
   const deletePost = () => {
     let confirmDelete = confirm("Want to delete the post?");

@@ -5,6 +5,7 @@ import { PostCard } from "../components";
 import { useSelector } from "react-redux";
 import "./pages.css";
 import Loader from "../components/Loder";
+
 function Home() {
   const [posts, setPosts] = useState([]);
   const loggedIn = useSelector((state) => state.auth.status);
@@ -12,12 +13,8 @@ function Home() {
   const [loding, setLoading] = useState(false);
 
   useEffect(() => {
-    console.log("userid, loggedin ",userId,loggedIn)
-    console.log("post length: ",posts.length)
-
     if (!loggedIn) setLoading(false);
     else if (loggedIn && userId) {
-      console.log("getting posts")
       setLoading(true);
       appwriteService
         .getPosts(userId)

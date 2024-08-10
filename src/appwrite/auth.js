@@ -49,7 +49,6 @@ export class AuthService {
       console.log("Appwrite serive :: getCurrentUser :: error", error);
       throw error;
     }
-    return null;
   }
 
   async logout() {

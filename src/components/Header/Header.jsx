@@ -51,7 +51,7 @@ function Header() {
     <header className="header-container">
         <nav className="navigation">
           <div className="leftpart">
-            <Link to="/">
+            <Link to="/" className="logolink">
               <img src="/Blog Logo.png" className="logo" />
             </Link>
           </div>
