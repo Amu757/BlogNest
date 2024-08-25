@@ -10,7 +10,7 @@ function Contact() {
             <img src="/myimage.png" alt="img" />
             <div className="intro">
               <h2>Aman Waghmare</h2>
-              <p>Web Developer</p>
+              <p>Full Stack Web Developer</p>
             </div>
           </div>
         </div>

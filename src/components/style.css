@@ -5,7 +5,6 @@
   color: black;
 }
 
-/* Center the loader on the page */
 .loader-container {
   height: 100vh;
   width: 100vw;
@@ -14,10 +13,9 @@
   align-items: center;
 }
 
-/* Define the loader style */
 .loaderring {
-  border: 16px solid #d1d1d1; /* Light grey */
-  border-top: 16px solid #3498db; /* Blue */
+  border: 16px solid #d1d1d1; 
+  border-top: 16px solid #3498db; 
   border-radius: 50%;
   width: 120px;
   height: 120px;
@@ -27,7 +25,6 @@
   left: 45%;
 }
 
-/* Define the spinning animation */
 @keyframes spin {
   0% {
     transform: rotate(0deg);
